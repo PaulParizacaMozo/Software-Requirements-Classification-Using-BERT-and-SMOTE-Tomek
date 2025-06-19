@@ -263,7 +263,7 @@ Se ejecutó el código original en mi máquina local para obtener los resultados
 
 Los resultados replicados están bastante cerca de los originales, con algunas diferencias menores que podrían estar relacionadas con el preprocesamiento, el modelo o los datos específicos utilizados.
 
-### Propuesta
+## Propuesta
 
 El pipeline propuesto para la clasificación de requerimientos sigue una secuencia de seis pasos fundamentales, con bucles de retroalimentación para optimizar y refinar los modelos.
 
