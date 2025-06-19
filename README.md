@@ -273,7 +273,7 @@ El pipeline propuesto para la clasificación de requerimientos sigue una secuenc
 
 3. **Manejo del Desbalanceo de Clases**: Se abordan las clases desbalanceadas con técnicas como SMOTE, Tomek Links y ajuste de pesos, para generar un conjunto de datos equilibrado.
 
-4. **Clasificación con Modelos Supervisados**: Modelos como SVM, Bosques Aleatorios y Redes Neuronales se entrenan con los embeddings balanceados para clasificar los requerimientos.
+4. **Clasificación con Modelos Supervisados**: Modelos como **SVM**, **Bosques Aleatorios** y **Redes Neuronales (MLP)** se entrenan con los embeddings balanceados para clasificar los requerimientos.
 
 5. **Evaluación del Modelo**: Se calculan métricas como precisión, recall, F1-score y AUC, y se realiza validación cruzada para evaluar el desempeño del modelo.
 
@@ -289,25 +289,25 @@ Cada paso está diseñado para asegurar que el modelo sea robusto y eficiente, u
 
 | **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
 | --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + MLP - SVM                | 0.8683        | 0.8368     | 0.8269       | 0.8368       |
-| BERT + SMOTE-Tomek + MLP - Random Forest      | 0.9808        | 0.9808     | 0.9808       | 0.9808       |
-| BERT + SMOTE-Tomek + MLP - MLP  | 0.9888        | 0.9888     | 0.9888       | 0.9888       |
+| BERT + SMOTE-Tomek + SVM                            | 0.8683             | 0.8368           | 0.8269            | 0.8368            |
+| BERT + SMOTE-Tomek + Random Forest                 | 0.9808             | 0.9808           | 0.9808            | 0.9808            |
+| BERT + SMOTE-Tomek + MLP                            | 0.9888             | 0.9888           | 0.9888            | 0.9888            |
 
 #### 11-clases
 
 | **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
 | --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + MLP - SVM                | 0.9536        | 0.9486     | 0.9492       | 0.9486       |
-| BERT + SMOTE-Tomek + MLP - Random Forest      | 0.9947        | 0.9946     | 0.9946       | 0.9946       |
-| BERT + SMOTE-Tomek + MLP - MLP  | 0.9949        | 0.9946     | 0.9946       | 0.9946       |
+| BERT + SMOTE-Tomek + SVM                            | 0.9536             | 0.9486           | 0.9492            | 0.9486            |
+| BERT + SMOTE-Tomek + Random Forest                 | 0.9947             | 0.9946           | 0.9946            | 0.9946            |
+| BERT + SMOTE-Tomek + MLP                            | 0.9949             | 0.9946           | 0.9946            | 0.9946            |
 
 #### 12-clases
 
 | **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
 | --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + MLP - SVM                | 0.9150        | 0.9056     | 0.9068       | 0.9056       |
-| BERT + SMOTE-Tomek + MLP - Random Forest      | 0.9953        | 0.9952     | 0.9952       | 0.9952       |
-| BERT + SMOTE-Tomek + MLP - MLP  | 0.9826        | 0.9824     | 0.9824       | 0.9824       |
+| BERT + SMOTE-Tomek + SVM                            | 0.9150             | 0.9056           | 0.9068            | 0.9056            |
+| BERT + SMOTE-Tomek + Random Forest                 | 0.9953             | 0.9952           | 0.9952            | 0.9952            |
+| BERT + SMOTE-Tomek + MLP                            | 0.9826             | 0.9824           | 0.9824            | 0.9824            |
 
 ---
 
@@ -315,14 +315,14 @@ Cada paso está diseñado para asegurar que el modelo sea robusto y eficiente, u
 
 1. **2-clases:**
 
-   - **MLP Neural Network** muestra el mejor desempeño en todas las métricas (precision, recall, f1-score y accuracy), seguido de **Random Forest** y **SVM**.
+   - El modelo **BERT + SMOTE-Tomek + MLP** muestra el mejor desempeño en todas las métricas (precision, recall, f1-score y accuracy), seguido de **Random Forest** y **SVM**. Esta arquitectura híbrida demuestra ser la más eficiente para manejar la clasificación binaria de requisitos, con un rendimiento casi perfecto en todas las métricas.
 
 2. **11-clases:**
 
-   - **Random Forest** y **MLP Neural Network** presentan resultados muy cercanos en precisión, recall, f1-score y accuracy, con **Random Forest** liderando ligeramente en todas las métricas.
+   - En la clasificación multiclase con 11 clases, **Random Forest** y **MLP Neural Network** presentan resultados muy cercanos en precisión, recall, f1-score y accuracy, con **Random Forest** liderando ligeramente en todas las métricas. Este desempeño refuerza la eficacia de la combinación **BERT + SMOTE-Tomek** en la clasificación de múltiples clases, equilibrando las clases desbalanceadas y mejorando la generalización.
 
 3. **12-clases:**
 
-   - **Random Forest** nuevamente supera a los otros modelos, con **MLP Neural Network** siendo la siguiente opción más eficiente en precisión y recall, aunque con un desempeño ligeramente inferior.
+   - En el caso de 12 clases, **Random Forest** nuevamente lidera en todas las métricas, con **MLP Neural Network** siendo la siguiente opción más eficiente en precisión y recall. Estos resultados destacan la versatilidad de **BERT + SMOTE-Tomek** para manejar una mayor cantidad de clases y su capacidad para mejorar el rendimiento de clasificación incluso en escenarios más complejos.
 
-Este formato destaca claramente que todos los modelos están basados en la arquitectura **BERT + SMOTE-Tomek + MLP**, y permite comprender que esta combinación mejora el rendimiento en tareas de clasificación multiclase.
+Este formato subraya cómo la combinación de **BERT + SMOTE-Tomek + modelos supervisados** mejora el rendimiento de los modelos en la clasificación de requisitos de software, superando enfoques tradicionales y mostrando su efectividad en la clasificación multiclase y con clases desbalanceadas.
