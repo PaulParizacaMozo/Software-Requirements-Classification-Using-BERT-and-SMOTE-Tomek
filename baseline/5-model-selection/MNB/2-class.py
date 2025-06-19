@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
+import warnings
 
 import os, sys
 sys.path.insert(0, os.path.abspath("../.."))
+warnings.filterwarnings("ignore")
 from utils import utils
 
 class_names = ['F', 'NF']

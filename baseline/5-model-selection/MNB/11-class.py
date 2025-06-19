@@ -3,9 +3,11 @@ import numpy as np
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
 from sklearn.multiclass import OneVsRestClassifier
+import warnings
 
 import os, sys
 sys.path.insert(0, os.path.abspath("../.."))
+warnings.filterwarnings("ignore")
 from utils import utils
 
 class_names = ['A', 'L', 'LF', 'MN', 'O', 'PE', 'SC', 'SE', 'US', 'FT', 'PO']
