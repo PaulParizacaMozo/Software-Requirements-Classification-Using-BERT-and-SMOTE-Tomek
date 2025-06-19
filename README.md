@@ -283,7 +283,7 @@ Cada paso está diseñado para asegurar que el modelo sea robusto y eficiente, u
 
 ![Pipeline del modelo propuesto](resources/pipelineTesis.png)
 
-## Resultados con la Nueva Arquitectura (BERT + SMOTE-Tomek + MLP)
+## Resultados con la Nueva Arquitectura
 
 #### 2-clases
 
