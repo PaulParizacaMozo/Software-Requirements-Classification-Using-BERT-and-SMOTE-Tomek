@@ -137,192 +137,179 @@ El proyecto requiere modelos específicos de la librería NLTK. Puedes descargar
 python -c "import nltk; nltk.download('punkt'); nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('averaged_perceptron_tagger')"
 ```
 
-# Resultados Replicados
+# Resultados
 
-Se ejecutó el código original en mi máquina local para obtener los resultados presentados en las siguientes tablas. A partir de este proceso, se generaron dos conjuntos de resultados: los resultados originales y los resultados replicados, los cuales se muestran a continuación para su comparación y análisis.
+En esta sección se presentan los detalles del entorno de ejecución, los datos utilizados, y los resultados experimentales obtenidos con el modelo propuesto para la clasificación de requisitos de software.
 
-### Tabla 1: Resultados Originales
+## Entorno de Ejecución
 
-<table>
- <tr>
-  <td></td>
-  <td colspan="4" align="center">BoW</td>
-  <td colspan="4" align="center">TF-IDF</td>
-  </tr>
- <tr>
-  <td></td>
-  <td align="center">Precision</td>
-  <td align="center">Recall</td>
-  <td align="center">F1-score</td>
-  <td align="center">Accuracy</td>
-  <td align="center">Precision</td>
-  <td align="center">Recall</td>
-  <td align="center">F1-score</td>
-  <td align="center">Accuracy</td>
-  </tr>
- <tr>
-  <td align="center">MNB</td>
-  <td align="center">0.913</td>
-  <td align="center">0.911</td>
-  <td align="center">0.911</td>
-  <td align="center">0.911</td>
-  <td align="center">0.928</td>
-  <td align="center">0.927</td>
-  <td align="center">0.927</td>
-  <td align="center">0.927</td>
-  </tr>
- <tr>
-  <td align="center">MNB (11-class)</td>
-  <td align="center">0.774</td>
-  <td align="center">0.741</td>
-  <td align="center">0.737</td>
-  <td align="center">0.741</td>
-  <td align="center">0.740</td>
-  <td align="center">0.739</td>
-  <td align="center">0.722</td>
-  <td align="center">0.738</td>
-  </tr>
- <tr>
-  <td align="center">MNB (12-class)</td>
-  <td align="center">0.789</td>
-  <td align="center">0.769</td>
-  <td align="center">0.768</td>
-  <td align="center">0.769</td>
-  <td align="center">0.767</td>
-  <td align="center">0.764</td>
-  <td align="center">0.744</td>
-  <td align="center">0.764</td>
-  </tr>
-</table>
+El modelo fue entrenado y evaluado en un entorno de ejecución con las siguientes especificaciones de hardware y software:
 
-### Tabla 2: Resultados Replicados
+**Hardware:**
 
-<table>
- <tr>
-  <td></td>
-  <td colspan="4" align="center">BoW</td>
-  <td colspan="4" align="center">TF-IDF</td>
-  </tr>
- <tr>
-  <td></td>
-  <td align="center">Precision</td>
-  <td align="center">Recall</td>
-  <td align="center">F1-score</td>
-  <td align="center">Accuracy</td>
-  <td align="center">Precision</td>
-  <td align="center">Recall</td>
-  <td align="center">F1-score</td>
-  <td align="center">Accuracy</td>
-  </tr>
- <tr>
-  <td align="center">MNB</td>
-  <td align="center">0.9137</td>
-  <td align="center">0.9123</td>
-  <td align="center">0.9121</td>
-  <td align="center">0.9123</td>
-  <td align="center">0.9312</td>
-  <td align="center">0.9298</td>
-  <td align="center">0.9299</td>
-  <td align="center">0.9298</td>
-  </tr>
- <tr>
-  <td align="center">MNB (11-class)</td>
-  <td align="center">0.7546</td>
-  <td align="center">0.7295</td>
-  <td align="center">0.7257</td>
-  <td align="center">0.7295</td>
-  <td align="center">0.7612</td>
-  <td align="center">0.7372</td>
-  <td align="center">0.7229</td>
-  <td align="center">0.7372</td>
-  </tr>
- <tr>
-  <td align="center">MNB (12-class)</td>
-  <td align="center">0.7922</td>
-  <td align="center">0.7761</td>
-  <td align="center">0.7725</td>
-  <td align="center">0.7761</td>
-  <td align="center">0.7573</td>
-  <td align="center">0.7514</td>
-  <td align="center">0.7303</td>
-  <td align="center">0.7514</td>
-  </tr>
-</table>
+- GPU: NVIDIA Quadro T1000.
+- Procesador: Intel(R) Core(TM) i7-9850H (12) @ 4.60 GHz.
+- Memoria RAM: 32 GB.
 
-### Explicación
+**Software:**
 
-1. **2-clases:**
+- **Sistema Operativo:** Arch Linux.
+- **Python:** 3.8 (usando Conda).
+- **Librerías principales:**
+  - `nltk==3.5`
+  - `scikit-learn==0.24.0`
+  - `gensim==3.8.3`
+  - `catboost==0.26`
+  - `tensorflow==2.4.0`
+  - `PyTorch`
+  - `transformers`
 
-   - Los resultados de **BoW** y **TF-IDF** replicados son **idénticos** o **muy cercanos** a los originales. La precisión, el recall, el F1-score y la accuracy son muy similares, con una ligera mejora en **TF-IDF** en los resultados replicados.
-2. **11-clases:**
+El código fuente completo se encuentra en el siguiente repositorio de GitHub, con el fin de garantizar la reproducibilidad de los resultados:
 
-   - Aunque los resultados replicados en **BoW** y **TF-IDF** son un poco **inferiores** a los originales, aún están **relativamente cerca**. Esto se observa especialmente en la precisión y el recall. Es posible que un ajuste en los parámetros del modelo o en el preprocesamiento de los datos pueda mejorar estos resultados.
-3. **12-clases:**
+[https://github.com/PaulParizacaMozo/Software-Requirements-Classification-Using-BERT-and-SMOTE-Tomek](https://github.com/PaulParizacaMozo/Software-Requirements-Classification-Using-BERT-and-SMOTE-Tomek)
 
-   - Los resultados replicados en **BoW** son **similares** a los originales, con una pequeña mejora en la precisión y el recall. Sin embargo, en **TF-IDF**, los resultados replicados muestran una ligera **disminución** en precisión y recall en comparación con los originales.
+## Datos
 
-Los resultados replicados están bastante cerca de los originales, con algunas diferencias menores que podrían estar relacionadas con el preprocesamiento, el modelo o los datos específicos utilizados.
+El conjunto de datos original tera-PROMISE consta de 625 requisitos etiquetados, con 255 requisitos funcionales y 370 no funcionales. Para este trabajo, se utilizó el conjunto de datos ampliado **PROMISE_exp**, que contiene 444 requisitos funcionales y 525 no funcionales. Un 10% de este conjunto de datos se separó para pruebas, mientras que el resto fue procesado utilizando la técnica SMOTE-Tomek para abordar el desbalanceo de clases. Posteriormente, el modelo CatBoost fue utilizado para la clasificación.
 
-## Propuesta
+**Número de requisitos por tipo en PROMISE_exp**
 
-El pipeline propuesto para la clasificación de requerimientos sigue una secuencia de seis pasos fundamentales, con bucles de retroalimentación para optimizar y refinar los modelos.
+| Tipo de Requisito | Cantidad |
+| :--- | :--- |
+| **Requisito Funcional (F)** | **444** |
+| Disponibilidad (A) | 31 |
+| Legal (L) | 15 |
+| Apariencia (LF) | 49 |
+| Mantenibilidad (MN) | 24 |
+| Operatividad (O) | 77 |
+| Rendimiento (PE) | 67 |
+| Escalabilidad (SC) | 22 |
+| Seguridad (SE) | 125 |
+| Usabilidad (US) | 85 |
+| Tolerancia a Fallos (FT) | 18 |
+| Portabilidad (PO) | 12 |
+| **Total** | **969** |
 
-1. **Preprocesamiento de Datos**: Limpieza, normalización, tokenización, eliminación de stopwords y lematización de los datos para su entrada al modelo.
+A pesar de la expansión, el conjunto sigue estando desbalanceado, con la clase de portabilidad siendo la menos representada.
 
-2. **Generación de Embeddings con BERT**: Se cargan modelos preentrenados de BERT y se ajustan al dominio para extraer embeddings contextuales. Luego, se aplican técnicas de reducción de dimensionalidad y optimización de recursos.
+**Distribución de clases en PROMISE_exp**
+![Distribución de clases en PROMISE_exp](graficos/stacked_plot_classes.png)
 
-3. **Manejo del Desbalanceo de Clases**: Se abordan las clases desbalanceadas con técnicas como SMOTE, Tomek Links y ajuste de pesos, para generar un conjunto de datos equilibrado.
+## Metodología y Configuración Experimental
 
-4. **Clasificación con Modelos Supervisados**: Modelos como **SVM**, **Bosques Aleatorios** y **Redes Neuronales (MLP)** se entrenan con los embeddings balanceados para clasificar los requerimientos.
+El pipeline experimental se diseñó para garantizar una evaluación robusta del modelo de clasificación.
 
-5. **Evaluación del Modelo**: Se calculan métricas como precisión, recall, F1-score y AUC, y se realiza validación cruzada para evaluar el desempeño del modelo.
+- **Generación de Embeddings:** Se utilizó el modelo **BERT** (`bert-base-uncased`) para convertir cada requisito textual en un vector numérico de 768 dimensiones.
+- **Modelo de Clasificación:** Se empleó un clasificador **CatBoost**, un algoritmo de Gradient Boosting.
+- **Manejo de Datos y Balanceo:**
+  - El conjunto de datos se dividió de forma estratificada en un **conjunto de entrenamiento (90%)** y un **conjunto de prueba (10%)**.
+  - La técnica **SMOTE-Tomek** se aplicó exclusivamente al conjunto de entrenamiento.
+- **Proceso de Validación y Prueba:**
+  - **Validación Cruzada:** Se realizó una validación cruzada de 10 pliegues (k=10) sobre el conjunto de entrenamiento.
+  - **Evaluación Final:** Se entrenó un modelo final con todo el conjunto de entrenamiento y se evaluó su rendimiento definitivo sobre el conjunto de prueba aislado.
+- **Métricas de Evaluación:** El rendimiento se midió con **Accuracy**, **Precisión**, **Recall** y **F1-Score** (usando promedio ponderado para multiclase).
 
-6. **Ajustes y Optimización**: Refinamiento del modelo mediante la sintonización de hiperparámetros y ajustes iterativos basados en los resultados obtenidos.
+## Resultados Experimentales
 
-Cada paso está diseñado para asegurar que el modelo sea robusto y eficiente, utilizando técnicas avanzadas de procesamiento de lenguaje natural y aprendizaje automático.
+Se llevaron a cabo dos experimentos de clasificación: binaria (Funcional vs. No Funcional) y multiclase (11 tipos de requisitos no funcionales).
 
-![Pipeline del modelo propuesto](resources/pipelineTesis.png)
+### Clasificación Binaria (Funcional vs. No Funcional)
 
-## Resultados con la Nueva Arquitectura
+La validación cruzada arrojó un **F1-Score promedio de 97.25% ± 0.59%**. En la evaluación final sobre el conjunto de prueba, el modelo alcanzó un **F1-Score global de 86.36%**.
 
-#### 2-clases
+**Reporte de clasificación final (Test Set) para 2 Clases**
 
-| **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
-| --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + SVM                            | 0.8683             | 0.8368           | 0.8269            | 0.8368            |
-| BERT + SMOTE-Tomek + Random Forest                 | 0.9808             | 0.9808           | 0.9808            | 0.9808            |
-| BERT + SMOTE-Tomek + MLP                            | 0.9888             | 0.9888           | 0.9888            | 0.9888            |
+| Clase | Precisión | Recall | F1-Score | Soporte |
+| :--- | :---: | :---: | :---: | :---: |
+| F | 0.94 | 0.75 | 0.84 | 44 |
+| NF | 0.82 | 0.96 | 0.89 | 53 |
+| **Promedio Ponderado** | **0.88** | **0.87** | **0.86** | **97** |
 
-#### 11-clases
+**Matriz de confusión para la clasificación de 2 clases**
+![Matriz de confusión para la clasificación de 2 clases](graficos/img2.png)
 
-| **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
-| --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + SVM                            | 0.9536             | 0.9486           | 0.9492            | 0.9486            |
-| BERT + SMOTE-Tomek + Random Forest                 | 0.9947             | 0.9946           | 0.9946            | 0.9946            |
-| BERT + SMOTE-Tomek + MLP                            | 0.9949             | 0.9946           | 0.9946            | 0.9946            |
+El modelo es particularmente efectivo para identificar requisitos No Funcionales (Recall de 96%).
 
-#### 12-clases
+### Clasificación Multiclase (11 Clases No Funcionales)
 
-| **Modelo**                                    | **Precision** | **Recall** | **F1-score** | **Accuracy** |
-| --------------------------------------------- | ------------- | ---------- | ------------ | ------------ |
-| BERT + SMOTE-Tomek + SVM                            | 0.9150             | 0.9056           | 0.9068            | 0.9056            |
-| BERT + SMOTE-Tomek + Random Forest                 | 0.9953             | 0.9952           | 0.9952            | 0.9952            |
-| BERT + SMOTE-Tomek + MLP                            | 0.9826             | 0.9824           | 0.9824            | 0.9824            |
+La validación cruzada resultó en un **F1-Score promedio de 99.77% ± 0.27%**. Sin embargo, la evaluación sobre el conjunto de prueba final, que mantiene el desbalanceo original, alcanzó un **F1-Score global de 71.66%**.
 
----
+**Reporte de clasificación final (Test Set) para 11 Clases NF**
 
-### Explicación de Resultados
+| Clase | Precisión | Recall | F1-Score | Soporte |
+| :--- | :---: | :---: | :---: | :---: |
+| A (Disponibilidad) | 1.00 | 0.67 | 0.80 | 3 |
+| FT (Tolerancia a Fallos) | 0.00 | 0.00 | 0.00 | 2 |
+| L (Legal) | 1.00 | 1.00 | 1.00 | 1 |
+| LF (Apariencia) | 0.60 | 0.60 | 0.60 | 5 |
+| MN (Mantenibilidad) | 0.33 | 0.50 | 0.40 | 2 |
+| O (Operatividad) | 0.62 | 0.62 | 0.62 | 8 |
+| PE (Rendimiento) | 0.64 | 1.00 | 0.78 | 7 |
+| PO (Portabilidad) | 0.00 | 0.00 | 0.00 | 1 |
+| SC (Escalabilidad) | 1.00 | 0.50 | 0.67 | 2 |
+| SE (Seguridad) | 0.92 | 0.92 | 0.92 | 13 |
+| US (Usabilidad) | 0.78 | 0.78 | 0.78 | 9 |
+| **Promedio Ponderado** | **0.72** | **0.74** | **0.72** | **53** |
 
-1. **2-clases:**
+**Matriz de confusión para la clasificación de 11 clases NF**
+![Matriz de confusión para la clasificación de 11 clases NF](graficos/img11.png)
 
-   - El modelo **BERT + SMOTE-Tomek + MLP** muestra el mejor desempeño en todas las métricas (precision, recall, f1-score y accuracy), seguido de **Random Forest** y **SVM**. Esta arquitectura híbrida demuestra ser la más eficiente para manejar la clasificación binaria de requisitos, con un rendimiento casi perfecto en todas las métricas.
+El modelo muestra un excelente rendimiento en clases con soporte suficiente como Seguridad (SE), pero lucha con clases con muy pocas muestras como Tolerancia a Fallos (FT) y Portabilidad (PO).
 
-2. **11-clases:**
+# Comparación con Trabajos Relacionados
 
-   - En la clasificación multiclase con 11 clases, **Random Forest** y **MLP Neural Network** presentan resultados muy cercanos en precisión, recall, f1-score y accuracy, con **Random Forest** liderando ligeramente en todas las métricas. Este desempeño refuerza la eficacia de la combinación **BERT + SMOTE-Tomek** en la clasificación de múltiples clases, equilibrando las clases desbalanceadas y mejorando la generalización.
+Los resultados se compararon con modelos de referencia de la literatura.
 
-3. **12-clases:**
+### Clasificación Binaria (Funcional vs. No Funcional)
 
-   - En el caso de 12 clases, **Random Forest** nuevamente lidera en todas las métricas, con **MLP Neural Network** siendo la siguiente opción más eficiente en precisión y recall. Estos resultados destacan la versatilidad de **BERT + SMOTE-Tomek** para manejar una mayor cantidad de clases y su capacidad para mejorar el rendimiento de clasificación incluso en escenarios más complejos.
+**Comparación de rendimiento F/NF en el dataset PROMISE NFR**
 
-Este formato subraya cómo la combinación de **BERT + SMOTE-Tomek + modelos supervisados** mejora el rendimiento de los modelos en la clasificación de requisitos de software, superando enfoques tradicionales y mostrando su efectividad en la clasificación multiclase y con clases desbalanceadas.
+| Enfoque | P (F) | R (F) | F1 (F) | P (NF) | R (NF) | F1 (NF) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| *Literatura (10-fold CV)* | | | | | | |
+| K. & M. (word feat. no sel.) | .92 | .93 | .93 | .93 | .92 | .92 |
+| A. et al. (processed) | .90 | **.97** | **.93** | **.98** | .93 | **.95** |
+| NoRBERT (large, ep.10, OS) | .92 | .88 | .90 | .92 | .95 | .93 |
+| *Literatura (Otras metodologías)* | | | | | | |
+| NoRBERT (large, loPo, US) | .87 | .71 | .78 | .82 | .93 | .87 |
+| **Modelo Propuesto** | **.94** | .75 | .84 | .82 | **.96** | .89 |
+
+#### Análisis de Resultados
+
+- **Precisión en Clase Funcional (F):** Nuestro modelo alcanza un **94%**, superando a los demás enfoques.
+- **Recall en Clase No Funcional (NF):** El modelo logra un **96%**, el más alto entre los competidores.
+- **Trade-off:** Existe un claro trade-off, donde el alto recall en NF se produce a costa de un recall más bajo en F.
+
+### Clasificación Multiclase (11 Clases No Funcionales)
+
+**Comparación de rendimiento para 4 clases de NFR**
+
+| Enfoque | P (US) | R (US) | F1 (US) | P (SE) | R (SE) | F1 (SE) | P (O) | R (O) | F1 (O) | P (PE) | R (PE) | F1 (PE) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| *Literatura (10-fold CV)* | | | | | | | | | | | | |
+| K. & M.multi | .65 | .82 | .70 | .81 | .77 | .75 | .81 | .86 | .82 | .86 | .81 | .80 |
+| NoRBERTmulti all | .83 | .88 | .86 | .90 | **.92** | .91 | .78 | .84 | .81 | **.92** | .87 | **.90** |
+| *Literatura (Otras metodologías)* | | | | | | | | | | | | |
+| NoRBERTmulti all (loPo) | .62 | **.84** | .71 | .75 | .86 | .80 | **.75** | .76 | **.75** | **.92** | .67 | .77 |
+| **Modelo Propuesto** | .78 | .78 | .78 | **.92** | **.92** | **.92** | .62 | .62 | .62 | .64 | **1.00** | .78 |
+
+#### Análisis de Resultados
+
+- **Dominio en Seguridad (SE):** Nuestro modelo, con **92%** en P, R y F1, supera a todos los demás enfoques en esta clase.
+- **Identificación en Rendimiento (PE):** Se alcanza un **recall perfecto de 100%**, un resultado notable.
+
+# Conclusiones y Trabajo Futuro
+
+### Conclusiones Principales
+
+1. **Eficacia del Pipeline:** La combinación de BERT, SMOTE-Tomek y CatBoost es altamente eficaz, logrando un F1-Score de **86.36%** en la clasificación binaria.
+2. **Rendimiento en Clases Críticas:** El modelo destaca en la clasificación multiclase, logrando un rendimiento de vanguardia en **Seguridad (92% F1)** y un recall perfecto en **Rendimiento (100%)**.
+3. **Impacto de la Metodología:** La separación de un conjunto de prueba final fue crucial para obtener una medida realista del rendimiento y evitar la fuga de datos.
+4. **Desafío del Desbalanceo:** A pesar de SMOTE, el desbalanceo extremo sigue siendo un desafío en la evaluación final con datos del mundo real.
+
+### Trabajo Futuro
+
+- **Optimización de Hiperparámetros:** Aplicar `GridSearchCV` o Búsqueda Bayesiana podría mejorar el rendimiento.
+- **Fine-Tuning de BERT:** Realizar un fine-tuning específico del dominio podría generar embeddings de mayor calidad.
+- **Aumentación de Datos Avanzada:** Explorar técnicas como la retrotraducción para las clases más minoritarias.
+- **Análisis de Interpretabilidad:** Integrar herramientas como SHAP para entender las predicciones del modelo.
